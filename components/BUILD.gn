@@ -1,0 +1,7 @@
+group("components") {
+  testonly = true
+  deps = [
+    "basic:components-basic-example",
+    #"routing:components-routing-example",
+  ]
+}

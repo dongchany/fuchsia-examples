@@ -1,0 +1,9 @@
+{
+  include: [ "sdk/lib/diagnostics/client.shard.cml" ],
+  program: {
+    runner: "elf",
+    binary: "bin/echo_client",
+
+  },
+
+}

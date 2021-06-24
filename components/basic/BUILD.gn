@@ -1,0 +1,34 @@
+import("//build/components.gni")
+import("//build/rust/rustc_binary.gni")
+
+rustc_binary("hello_world_bin") {
+  source_root = "src/hello_world.rs"
+  sources = [ "src/hello_world.rs" ]
+  name = "hello_world"
+  deps = [
+    "//src/lib/fuchsia",
+    "//third_party/rust_crates:tracing",
+  ]
+}
+
+rustc_binary("lifecycle_full_bin") {
+  name = "lifecycle_full"
+
+  sources = [ "src/lifecycle_full.rs" ]
+}
+
+fuchsia_component("hello-world") {
+  deps = [ ":hello_world_bin" ]
+  manifest = "meta/hello-world.cml"
+}
+
+fuchsia_component("lifecycle-full") {
+  manifest = "meta/lifecycle-full.cml"
+}
+
+fuchsia_package("components-basic-example") {
+  deps = [
+    ":hello-world",
+    "//src/sys/component_manager:component-manager-for-examples-cmp"
+  ]
+}

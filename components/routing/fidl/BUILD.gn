@@ -1,0 +1,7 @@
+import("//build/fidl/fidl.gni")
+
+fidl("echo") {
+  excluded_checks = [ "string-bounds-not-specified" ]
+  name = "fidl.examples.routing.echo"
+  sources = [ "echo.fidl" ]
+}

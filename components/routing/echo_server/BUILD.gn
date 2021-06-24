@@ -1,0 +1,16 @@
+import("//build/components.gni")
+import("//build/rust/rustc_binary.gni")
+
+rustc_binary("echo_server") {
+  sources = [ "src/main.rs" ]
+  deps = [
+    "//src/lib/fuchsia-async",
+    "//src/lib/fuchsia-component",
+  ]
+}
+
+fuchsia_component("echo_server_component") {
+  manifest = "meta/echo_server.cml"
+  component_name = "echo_server"
+  deps = [ ":echo_server" ]
+}
