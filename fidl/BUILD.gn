@@ -1,0 +1,27 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+group("fidl") {
+  testonly = true
+  deps = [
+    ":tests",
+    "dart:all",
+    "go:all",
+    "hlcpp:all",
+    "llcpp:all",
+    "rust:all",
+    "test:all",
+  ]
+}
+
+group("tests") {
+  testonly = true
+  deps = [
+    "dart:tests",
+    "go:tests",
+    "hlcpp:tests",
+    "llcpp:tests",
+    "test",
+  ]
+}
