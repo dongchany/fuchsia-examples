@@ -1,0 +1,22 @@
+import("//build/components.gni")
+
+executable("bin") {
+  output_name = "fidl_echo_hlcpp_async_client"
+  sources = [ "main.cc" ]
+  deps = [
+    "//sdk/lib/sys/cpp",
+    "//zircon/system/ulib/async-loop:async-loop-cpp",
+    "//zircon/system/ulib/async-loop:async-loop-default",
+    "//examples/fidl/fuchsia.examples",
+  ]
+}
+
+fuchsia_component("echo-client") {
+  manifest = "client.cmx"
+  deps = [ ":bin" ]
+}
+
+fuchsia_package("client") {
+  package_name = "echo-hlcpp-client"
+  deps = [ ":echo-client" ]
+}
